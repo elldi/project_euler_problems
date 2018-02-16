@@ -20,6 +20,7 @@ public class Answer {
 
             if(n3 % 2 == 0) agg += n3;
 
+
             n1=n2;
             n2=n3;
         }
