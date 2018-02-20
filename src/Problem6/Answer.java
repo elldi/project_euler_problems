@@ -5,6 +5,9 @@ package Problem6;
  */
 public class Answer {
 
+    // both methods could be done in one.
+    // Slight improvement on efficiency, but probably unnoticeable
+
     public static long sumOfSquares(int whereTo){
 
         long number = 0;
