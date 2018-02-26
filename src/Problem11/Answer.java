@@ -39,7 +39,13 @@ public class Answer {
     The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 
     What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
+
+    Might come back to this one, not particularly challenging, trust me i know i can do it. Just seems
+    a bit time consuming.
+
     */
+
+
 
     private static Integer [][] gridReader(Path path){
         Integer [][] numbers2D = new Integer[20][20];
@@ -68,12 +74,66 @@ public class Answer {
 
         Integer[][] values = gridReader(Paths.get("C:\\Users\\elliot\\IdeaProjects\\Project Euler Problems\\src\\Problem11\\20by20.txt"));
 
-        for(int x =0 ;x< values.length ; x++){
-            Integer [] line = values[x];
-            for(int y =0 ;y< line.length ; y++){
+        int total = 0;
+        for (Integer[] line : values) {
+            for (int y = 0; y < line.length; y++) {
+                if (y + 3 < line.length ) {
+                    int temp = line[y] * line[y + 1] * line[y + 2] * line[y + 3];
+                    if (temp > total) total = temp;
+                }
 
             }
         }
+        //System.out.println(total);
+
+//        int right = 0;
+//        for (Integer[] line : values) {
+//            for (int y = line.length - 1; y > -1; y--) {
+//                if (y - 3 >= 0) {
+//                    int temp = line[y] * line[y - 1] * line[y - 2] * line[y - 3];
+//                    if (temp > right) right = temp;
+//                }
+//
+//            }
+//        }
+//        System.out.println(right);
+
+        //int up = 0;
+        for (int x = 0; x < values.length; x++) {
+            for (int y = 0; y < values[x].length; y++) {
+                if (x + 3 < values.length) {
+                    int temp = values[x][y] * values[x + 1][y] * values[x + 2][y] * values[x + 3][y];
+                    if (temp > total) total = temp;
+                }
+
+            }
+        }
+        //System.out.println(up);
+
+
+        for (int x = 0; x < values.length; x++) {
+            for (int y = 0; y < values[x].length; y++) {
+                if (x + 3 < values.length && y + 3 < values[x].length) {
+                    int temp = values[x][y] * values[x + 1][y + 1] * values[x + 2][y + 2] * values[x + 3][y + 3];
+                    if (temp > total) total = temp;
+                }
+
+            }
+        }
+
+        for (int x = 0; x < values.length; x++) {
+            for (int y = 0; y < values[x].length; y++) {
+                if (y - 3 >= 0 && x - 3 >= 0) {
+                    int temp = values[x][y] * values[x - 1][y - 1] * values[x - 2][y - 2] * values[x - 3][y - 3];
+                    if (temp > total) total = temp;
+                }
+
+            }
+        }
+
+        System.out.println(total);
+
+
 
 
 
